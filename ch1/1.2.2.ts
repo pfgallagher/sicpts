@@ -15,3 +15,24 @@ const iterativeProcessFib = (n: number, a = 1, b = 0): number =>
 for (let i = 0; i < 10; i++) {
 	console.log(recursiveProcessFib(i), constantFib(i), iterativeProcessFib(i));
 }
+
+const firstDenomination = (kindsOfCoins: number): number =>
+	kindsOfCoins === 1
+		? 1
+		: kindsOfCoins === 2
+		? 5
+		: kindsOfCoins === 3
+		? 10
+		: kindsOfCoins === 4
+		? 25
+		: kindsOfCoins === 5
+		? 50
+		: 0;
+
+const cc = (amount: number, kindsOfCoins = 5): number =>
+	!amount
+		? 1
+		: amount < 0 || !kindsOfCoins
+		? 0
+		: cc(amount, kindsOfCoins - 1) +
+		  cc(amount - firstDenomination(kindsOfCoins), kindsOfCoins);
